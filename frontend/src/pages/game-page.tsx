@@ -146,6 +146,20 @@ const FIELD_CONFIG: FieldConfig[] = [
     ),
   },
   {
+    key: "age",
+    subKey: "Age",
+    label: "Age",
+    type: "numeric",
+    tolerance: 5,
+    display: (p, t) => (
+      <StatCell
+        value={p.age}
+        targetValue={t?.age}
+        type="numeric"
+      />
+    ),
+  },
+  {
     key: "Bowling",
     subKey: "Wickets",
     label: "Wkt",
@@ -346,7 +360,7 @@ const CricketWordle = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans p-4 pb-20">
-      <div className="max-w-7xl mx-auto">
+      <div className=" mx-auto">
         <header className="flex flex-col items-center mb-10">
           {/* <h1 className="text-6xl font-black tracking-tighter italic mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 drop-shadow-sm">
             IPL WORDLE
@@ -430,8 +444,8 @@ const CricketWordle = () => {
         )}
 
         <div className="overflow-x-auto rounded-3xl border border-gray-800 bg-gray-900/20 p-4">
-          <div className="min-w-[1000px]">
-            <div className="grid grid-cols-9 gap-3 mb-6 px-2">
+          <div className="min-w-250">
+            <div className="grid grid-cols-10 gap-3 mb-6 px-2">
               {FIELD_CONFIG.map((f) => (
                 <div
                   key={f.label}
@@ -448,7 +462,7 @@ const CricketWordle = () => {
                 .map((guess, i) => (
                   <div
                     key={i}
-                    className="grid grid-cols-9 gap-3 animate-in slide-in-from-left-4 duration-500"
+                    className="grid grid-cols-10 gap-3 animate-in slide-in-from-left-4 duration-500"
                   >
                     {guess.comparison.map((comp, j) => (
                       <div
